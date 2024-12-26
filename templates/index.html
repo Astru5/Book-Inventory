@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management - Search</title>
+    <link rel="icon" href="{{ url_for('static', filename='book.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="welcome-body">
+    <!-- Welcome Message and Buttons -->
+    <div class="welcome-container">
+        <h1>Book Inventory</h1>
+        <p class="welcome-message">Welcome to the Book Management System!</p>
+        <p class="welcome-message">Click any of the following buttons to get started:</p>
+        </p>
+        <div class="buttons-container">
+            <a href="{{ url_for('search_books') }}" class="button"><b>Book Search</b></a>
+            <a href="{{ url_for('add_book') }}" class="button"><b>Add Books</b></a>
+            <a href="{{ url_for('list_books') }}" class="button"><b>All Books</b></a>
+            <a href="{{ url_for('export_data') }}" class="button"><b>Export Data</b></a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created for Second Bind Software Development Challenge</p>
+    </footer>
+
+</body>
+
+</html>

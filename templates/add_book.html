@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management - Add Book</title>
+    <link rel="icon" href="{{ url_for('static', filename='book.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('search_books') }}">Book Search</a>
+        <a href="{{ url_for('add_book') }}">Add Book</a>
+        <a href="{{ url_for('home') }}">Book DB</a>
+        <a href="{{ url_for('list_books') }}">All Books</a>
+        <a href="{{ url_for('export_data') }}">Export Data</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Add a New Book</h1>
+        <form method="POST">
+            <label for="title">Title:</label><input type="text" name="title" id="title" required><br>
+            <label for="author">Author:</label><input type="text" name="author" id="author" required><br>
+            <label for="genre">Genre:</label><input type="text" name="genre" id="genre" required><br>
+            <label for="date">Publication Date:</label><input type="text" name="date" id="date" required><br>
+            <label for="isbn">ISBN-10:</label>
+            <input type="text" name="isbn" id="isbn" pattern="^\d{10}$" title="ISBN must be exactly 10 digits"
+                required><br>
+            <input type="submit" value="Add Book">
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footerSpace"></div>
+    <footer>
+        <p>Created for Second Bind Software Development Challenge</p>
+    </footer>
+
+</body>
+
+</html>

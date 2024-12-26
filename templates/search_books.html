@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management - Search Books</title>
+    <link rel="icon" href="{{ url_for('static', filename='book.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('search_books') }}">Book Search</a>
+        <a href="{{ url_for('add_book') }}">Add Book</a>
+        <a href="{{ url_for('home') }}">Book DB</a>
+        <a href="{{ url_for('list_books') }}">All Books</a>
+        <a href="{{ url_for('export_data') }}">Export Data</a>
+    </div>
+
+    <!-- Search Form -->
+    <div class="container">
+        <h1>Search for Books</h1>
+        <form method="POST">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="{{ request.form.get('title', '') }}"><br>
+
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author" value="{{ request.form.get('author', '') }}"><br>
+
+            <label for="genre">Genre:</label>
+            <input type="text" name="genre" id="genre" value="{{ request.form.get('genre', '') }}"><br>
+
+            <label for="date">Publication Date:</label>
+            <input type="text" name="date" id="date" value="{{ request.form.get('date', '') }}"><br>
+
+            <label for="isbn">ISBN-10:</label>
+            <input type="text" name="isbn" id="isbn" value="{{ request.form.get('isbn', '') }}"><br>
+
+            <input type="submit" value="Search">
+        </form>
+
+        <!-- Search Results -->
+        {% if result %}
+        <h2>Results:</h2>
+        <ul>
+            {% for row in result %}
+            <li>
+                <h3>{{ row[1][:50] }}{% if row[1]|length > 50 %}...{% endif %}</h3>
+                <p>Author: {{ row[2] }}</p>
+                <p>Genre: {{ row[3] }}</p>
+                <p>Publication Date: {{ row[4] }}</p>
+                <p>ISBN: {{ row[5] }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="no-results">No Books Found</p>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <div class="footerSpace"></div>
+    <footer>
+        <p>Created for Second Bind Software Development Challenge</p>
+    </footer>
+
+</body>
+
+</html>

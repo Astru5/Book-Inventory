@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Data</title>
+    <link rel="icon" href="{{ url_for('static', filename='book.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('search_books') }}">Book Search</a>
+        <a href="{{ url_for('add_book') }}">Add Book</a>
+        <a href="{{ url_for('home') }}">Book DB</a>
+        <a href="{{ url_for('list_books') }}">All Books</a>
+        <a href="{{ url_for('export_data') }}">Export Data</a>
+    </div>
+
+    <!-- Export Form -->
+    <div class="container">
+        <h1>Export Book Data</h1>
+        <form method="POST">
+            <h3><label for="format">Choose format:</label><br>
+                <select name="format" id="format">
+                    <option value="csv">CSV</option>
+                    <option value="json">JSON</option>
+                </select><br><br>
+            </h3>
+            <input type="submit" value="Export">
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created for Second Bind Software Development Challenge</p>
+    </footer>
+
+</body>
+
+</html>

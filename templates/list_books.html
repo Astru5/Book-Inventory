@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management - List Books</title>
+    <link rel="icon" href="{{ url_for('static', filename='book.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('search_books') }}">Book Search</a>
+        <a href="{{ url_for('add_book') }}">Add Book</a>
+        <a href="{{ url_for('home') }}">Book DB</a>
+        <a href="{{ url_for('list_books') }}">All Books</a>
+        <a href="{{ url_for('export_data') }}">Export Data</a>
+    </div>
+
+    <!-- List of Books -->
+    <div class="container">
+        <h1>All Books</h1>
+        <ul>
+            {% for row in result %}
+            <li>
+                <h3>{{ row[1][:50] }}{% if row[1]|length > 50 %}...{% endif %}</h3>
+                <p>Author: {{ row[2] }}</p>
+                <p>Genre: {{ row[3] }}</p>
+                <p>Publication Date: {{ row[4] }}</p>
+                <p>ISBN: {{ row[5] }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class="footerSpace"></div>
+    <footer>
+        <p>Created for Second Bind Software Development Challenge</p>
+    </footer>
+
+</body>
+
+</html>
